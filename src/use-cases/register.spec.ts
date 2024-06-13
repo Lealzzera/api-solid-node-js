@@ -27,7 +27,7 @@ describe("Register Use Case Tests", () => {
 	it("It should check if email already exists", async () => {
 		await registerUseCase.execute({ ...userMock, email: "john2@acme.com" });
 
-		expect(() =>
+		await expect(() =>
 			registerUseCase.execute({ ...userMock, email: "john2@acme.com" })
 		).rejects.toBeInstanceOf(UserAlreadyExistsError);
 	});
